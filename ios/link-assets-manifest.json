@@ -1,0 +1,237 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/Font/ChivoMono-Black.ttf",
+      "sha1": "dc8016410f4048d290309ab72fea9b5ed80f4563"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-BlackItalic.ttf",
+      "sha1": "44dd22f7c37be824e5822c73e0443c0ab0d3151f"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-Bold.ttf",
+      "sha1": "ae5b05b966809d5672316f21109248f5d5877787"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-BoldItalic.ttf",
+      "sha1": "2d789d9a805d4dfb0dff13b91dbd47b17b5754a9"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-ExtraBold.ttf",
+      "sha1": "5f24e988ba119976b14445817be9011dc253f70c"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-ExtraBoldItalic.ttf",
+      "sha1": "b0fe8bad91ce8d7cbfc5a8e8725b79f6c3ac2851"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-ExtraLight.ttf",
+      "sha1": "0f36fe898b09572620aee87b74d478493df05393"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-ExtraLightItalic.ttf",
+      "sha1": "e5627e6a7df751b60d4c4c418014263c2fcb8a66"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-Italic-VariableFont_wght.ttf",
+      "sha1": "14e8613c6c951a27f8f7b47bd70f0f652f670153"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-Italic.ttf",
+      "sha1": "6c75ca689d2bd97e6468e04ff775707b5f33493d"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-Light.ttf",
+      "sha1": "15745775bdf7003b962a2853966436f6d72d9c44"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-LightItalic.ttf",
+      "sha1": "a022c021cef6351e05d43031f6c6e4621c33b6e0"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-Medium.ttf",
+      "sha1": "59819351830fee1928e9fedd0c29faf254a75fdd"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-MediumItalic.ttf",
+      "sha1": "172a1bc0f37024ac9d6abd55d8b3b1bae59d14cf"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-Regular.ttf",
+      "sha1": "c192a244e0dae8e8f6ee7e17ee4cfa70fab3dba5"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-SemiBold.ttf",
+      "sha1": "2847ac881d87e2b5a7da87190ee0c509dce11637"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-SemiBoldItalic.ttf",
+      "sha1": "6470f475f0e1d8a905cae1b22ce88ca1fb786264"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-Thin.ttf",
+      "sha1": "235b5694f85634e07ad9ac24e751398e2f9d60f3"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-ThinItalic.ttf",
+      "sha1": "932ef56af76108d353d84dcfc3a4f821db274028"
+    },
+    {
+      "path": "src/assets/Font/ChivoMono-VariableFont_wght.ttf",
+      "sha1": "0bcb34b25b3582e4b05aad190c055b55aed72dfa"
+    },
+    {
+      "path": "src/assets/Font/Roboto-Black.ttf",
+      "sha1": "3f8e401d808f6ce84b542266726514ac8be73171"
+    },
+    {
+      "path": "src/assets/Font/Roboto-BlackItalic.ttf",
+      "sha1": "03d6e3747d862385dbe48e8296385b9236101a62"
+    },
+    {
+      "path": "src/assets/Font/Roboto-Bold.ttf",
+      "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
+    },
+    {
+      "path": "src/assets/Font/Roboto-BoldItalic.ttf",
+      "sha1": "2f10ad9e8cab0880182705c4e0fbaeabae706e64"
+    },
+    {
+      "path": "src/assets/Font/Roboto-Italic.ttf",
+      "sha1": "65f3f6a7e1bd2fa6f2df35e4b07775d7f1dde4f0"
+    },
+    {
+      "path": "src/assets/Font/Roboto-Light.ttf",
+      "sha1": "18788c5d630fa695f9283f6393bfa541b2031508"
+    },
+    {
+      "path": "src/assets/Font/Roboto-LightItalic.ttf",
+      "sha1": "6e01f9df9449565697032b002706a94b51862bbe"
+    },
+    {
+      "path": "src/assets/Font/Roboto-Medium.ttf",
+      "sha1": "3c6a09fcc6a454924c81af7dff94fc6d399ed79b"
+    },
+    {
+      "path": "src/assets/Font/Roboto-MediumItalic.ttf",
+      "sha1": "b3aa2d8f16d5a331fdced82f213a052b204eaca0"
+    },
+    {
+      "path": "src/assets/Font/Roboto-Regular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
+    },
+    {
+      "path": "src/assets/Font/Roboto-Thin.ttf",
+      "sha1": "58c733e22bceeaf9609ce578eca92ac303c6d92f"
+    },
+    {
+      "path": "src/assets/Font/Roboto-ThinItalic.ttf",
+      "sha1": "cc79d5a23bd0ec08b1d99f5390bf33cacc3082f4"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-Bold.ttf",
+      "sha1": "0c75d7b11dacfede72053e40b71849c43c22a454"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-BoldItalic.ttf",
+      "sha1": "6be5bc60f9bfb14a8f81d56587d7c4eb266f2a54"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-ExtraLight.ttf",
+      "sha1": "6546ced3a36a1640b7b684bca4f23481a2ec6e02"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-ExtraLightItalic.ttf",
+      "sha1": "e11bf51b3cd448df5383bbe49a206c27065c222c"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-Italic-VariableFont_wght.ttf",
+      "sha1": "6e234752556acf6455dcc9c0768bb20b03132aa9"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-Italic.ttf",
+      "sha1": "fae9acb23533e32c69da98c3e288d333245b5b4b"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-Light.ttf",
+      "sha1": "d783629f1972675179c9d4d3db8fffa037f62c77"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-LightItalic.ttf",
+      "sha1": "67cec1b29fcc2368ebff2e7b34c0b1caf751966b"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-Medium.ttf",
+      "sha1": "ba4ac211bbcd66da7712aa059b214155f4f7a93a"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-MediumItalic.ttf",
+      "sha1": "09bce12e925877d49f0fe5433b555f7c53f050a5"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-Regular.ttf",
+      "sha1": "10459dd11ec5adb59f3775b062dc06c4abe70a3a"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-SemiBold.ttf",
+      "sha1": "d2edc0348f2ee3d5031838a96d65201ac55d2587"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-SemiBoldItalic.ttf",
+      "sha1": "68e528898509ec4bf78fd9c905d6bf67e274c0e0"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-Thin.ttf",
+      "sha1": "c8ca137fa86427da7d776e55ba3d3da82f6553f7"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-ThinItalic.ttf",
+      "sha1": "1a8987e423a9a04df440d990d6f1ee9d7bc4f9c3"
+    },
+    {
+      "path": "src/assets/Font/RobotoMono-VariableFont_wght.ttf",
+      "sha1": "4c4b222617ecdda163e01a88c191ab0a50c336cf"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-Black.ttf",
+      "sha1": "36a20e74119dc8bb276d5db1b959c14dec7d26bd"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-Bold.ttf",
+      "sha1": "7bfea10c4050e0bce05c56d9d303788773430fa3"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-ExtraBold.ttf",
+      "sha1": "f8c2d699b2c73c7a91b270381f3ad9026c9f2104"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-ExtraLight.ttf",
+      "sha1": "fb579fe3a387f03b60649b5eb43bad3b53949f8a"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-Light.ttf",
+      "sha1": "c0cc03f0dbcc5a7330526b31d6e1c039e49f6385"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-Medium.ttf",
+      "sha1": "ef9abee58409c5ad6191ab528b2d1f753462f166"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-Regular.ttf",
+      "sha1": "40da9134dfa586bc4b6c62b6540269d3d497f480"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-SemiBold.ttf",
+      "sha1": "bfa8c530ab10e9db394bc3d1f57a46c5a4e7c859"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-Thin.ttf",
+      "sha1": "afab4e69adea6eb87842c75129ebed1de387d85c"
+    },
+    {
+      "path": "src/assets/Font/RobotoSlab-VariableFont_wght.ttf",
+      "sha1": "79e62139cca56d6e8678809c09d0f218e2beb47f"
+    }
+  ]
+}
