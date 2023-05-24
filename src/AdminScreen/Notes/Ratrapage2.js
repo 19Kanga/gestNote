@@ -21,7 +21,7 @@ import ClasseNotes from '../Resultat/classeNotes';
 // import ClasseNotes from './classeNotes';
 // import {Card} from '@rneui/themed';
 
-export default function Ratrapage2({navigation}) {
+export default function Ratrapage2({data, classe, ad, ae}) {
   const section = {
     t1: 'N°',
     t2: 'Nom',
@@ -30,146 +30,8 @@ export default function Ratrapage2({navigation}) {
     t5: <Icon name="ellipsis-vertical" size={20} />,
   };
 
-  const data = [
-    {
-      num: 1,
-      nom: 'fotso lionel',
-      moyenne: 14.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(52, 168, 83,.2)',
-    },
-    {
-      num: 2,
-      nom: 'henke daryl',
-      moyenne: 15.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(52, 168, 83,.2)',
-    },
-    {
-      num: 3,
-      nom: 'henke daryl',
-      moyenne: 25.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(224, 57, 44,.2)',
-    },
-    {
-      num: 4,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(52, 168, 83,.2)',
-    },
-    {
-      num: 5,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 10,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(224, 57, 44,.2)',
-    },
-    {
-      num: 6,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(52, 168, 83,.2)',
-    },
-    {
-      num: 7,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(224, 57, 44,.2)',
-    },
-    {
-      num: 8,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(224, 57, 44,.2)',
-    },
-    {
-      num: 9,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(224, 57, 44,.2)',
-    },
-    {
-      num: 10,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(224, 57, 44,.2)',
-    },
-    {
-      num: 11,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(52, 168, 83,.2)',
-    },
-    {
-      num: 12,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-      color: 'rgba(224, 57, 44,.2)',
-    },
-    {
-      num: 12,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-    },
-    {
-      num: 12,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-    },
-    {
-      num: 12,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-    },
-    {
-      num: 12,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-    },
-    {
-      num: 12,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-    },
-    {
-      num: 12,
-      nom: 'henke daryl',
-      moyenne: 5.7,
-      total: 25,
-      euil: <Icon name="pencil-outline" size={18} />,
-    },
-  ];
+  console.log (data);
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#F5F6F7'}}>
       <View
@@ -206,17 +68,17 @@ export default function Ratrapage2({navigation}) {
           <Text
             style={{color: 'white', fontFamily: 'Roboto-Black', marginLeft: 4}}
           >
-            Classe : MS2I{' '}
+            Classe :{classe.nomClasse + ' ' + classe.niveau_classe}
           </Text>
           <View style={{flexDirection: 'row', marginTop: 8}}>
             <Text style={styles.text}>
-              Total : <Text style={{color: 'white'}}>25</Text>
+              Total: <Text style={{color: 'white'}}>{data.length}</Text>
             </Text>
             <Text style={styles.text}>
-              Admis : <Text style={{color: 'greenyellow'}}>15</Text>
+              Admis : <Text style={{color: 'greenyellow'}}>{ad}</Text>
             </Text>
             <Text style={styles.text}>
-              Echec: <Text style={{color: 'tomato'}}>10</Text>
+              Echec: <Text style={{color: 'tomato'}}>{ae}</Text>
             </Text>
           </View>
         </View>
@@ -229,7 +91,7 @@ export default function Ratrapage2({navigation}) {
           marginVertical: 17,
         }}
       >
-        LISTE DES NOTES DE LA SESSION NORMALE 2
+        LISTE DES NOTES DE LA SESSION NORMALE
       </Text>
       <View>
         <View
@@ -310,7 +172,9 @@ export default function Ratrapage2({navigation}) {
               paddingBottom: 100,
             }}
           >
-            {data.map ((dat, index) => <ClasseNotes key={index} notes={dat} />)}
+            {data.map ((dat, index) => (
+              <ClasseNotes key={index} notes={dat} url="DetailNotes" />
+            ))}
           </ScrollView>
         </View>
       </View>

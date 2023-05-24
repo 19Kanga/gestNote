@@ -1,7 +1,16 @@
-import {View, Text, TextInput, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {Button, Pressable} from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Animated from 'react-native-reanimated';
 
 const styles = StyleSheet.create ({
   container: {
@@ -50,9 +59,27 @@ const styles = StyleSheet.create ({
     textAlign: 'center',
     fontWeight: 600,
   },
+  communique: {
+    height: 100,
+    backgroundColor: 'white',
+    // borderWidth: 1,
+    // borderColor: 'steelblue',
+    marginHorizontal: 10,
+    marginVertical: 7,
+    borderRadius: 7,
+    elevation: 5,
+    shadowColor: 'steelblue',
+  },
+  date: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    margin: 3,
+    color: 'gray',
+  },
 });
 
-export default function Communique () {
+export default function Communique({navigation}) {
+  const d = new Date ();
   const textIcon = (txt, nbr) => {
     return (
       <View
@@ -83,67 +110,60 @@ export default function Communique () {
   };
 
   return (
-    <View style={{flex: 1, justifyContent: 'center', backgroundColor: 'white'}}>
-      <View style={{alignItems: 'center', marginBottom: 15}}>
-        <Image source={require ('../../assets/image/iiac.png')} />
+    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+      <View
+        style={{
+          width: 60,
+          height: 60,
+          backgroundColor: 'steelblue',
+          position: 'absolute',
+          bottom: 50,
+          right: 23,
+          borderRadius: 50,
+          overflow: 'hidden',
+          zIndex: 100,
+          // flex: 1,
+        }}
+      >
+        <Pressable
+          onPress={() => navigation.navigate ('News')}
+          style={{
+            height: 60,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Icon name="md-add" size={40} color="white" />
+        </Pressable>
       </View>
-      <View style={{marginHorizontal: 30}}>
+      <View>
         <Text
           style={{
             textAlign: 'center',
-            fontWeight: '600',
-            marginTop: 9,
-            fontSize: 15,
+            fontSize: 19,
+            fontFamily: 'monospace',
+            fontWeight: '700',
+            marginVertical: 14,
           }}
         >
-          Bienvenue dans la rubrique  Communiquez
+          Liste Communiquée envoyé
         </Text>
-        <Text style={{textAlign: 'center', fontWeight: '600', fontSize: 15}}>
-          Il s'agit ici de faire des annonces à toutes les étudiants d'une classe que l'on precisera
-        </Text>
-      </View>
-      <View style={{justifyContent: 'center'}}>
-
-        {textIcon ('selectioner la classe correspondante', 25)}
-        {textIcon ('Object', 0)}
-        <TextInput
-          style={styles.input1}
-          // secureTextEntry={true}
-          underlineColorAndroid="transparent"
-          placeholder="Message"
-          placeholderTextColor="#9a73ef"
-          autoCapitalize="none"
-          role="combobox"
-
-          // onChangeText={this.handlePassword}
-        />
-
-        <View
-          style={{
-            backgroundColor: '#1177BB',
-            height: 50,
-            marginHorizontal: 35,
-            marginVertical: 30,
-            borderRadius: 50,
-            overflow: 'hidden',
-          }}
+        <Animated.ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{height: '92.5%', backgroundColor: '#F5F6F7'}}
         >
-          <Pressable pressEffect="ripple">
-            <Text
-              style={{
-                height: 50,
-                textAlign: 'center',
-                textAlignVertical: 'center',
-                color: 'white',
-                fontSize: 15,
-              }}
-            >
-              Submit
-            </Text>
-          </Pressable>
-        </View>
-
+          <View style={{paddingVertical: 5}}>
+            <View style={styles.communique} />
+            <Text style={styles.date}>{d.toLocaleDateString ()}</Text>
+            <View style={styles.communique} />
+            <View style={styles.communique} />
+            <View style={styles.communique} />
+            <Text style={styles.date}>{d.toLocaleDateString ()}</Text>
+            <View style={styles.communique} />
+            <View style={styles.communique} />
+          </View>
+        </Animated.ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }

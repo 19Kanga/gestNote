@@ -1,3 +1,4 @@
+import {Pressable} from '@react-native-material/core';
 import React from 'react';
 import {
   View,
@@ -18,24 +19,27 @@ const Acceuil = ({navigation}) => {
           <Image source={logo} alt="yoo" style={styles.logo} />
         </View>
         <View style={styles.view2}>
-          <TouchableOpacity
+          <Pressable
+            pressEffectColor="white"
             style={styles.btn}
             onPress={() => navigation.navigate ('Login', {role: 'etude'})}
           >
             <Text style={styles.text}>Je suis Etudiant</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
+          </Pressable>
+          <Pressable
+            pressEffectColor="white"
             style={styles.btn}
             onPress={() => navigation.navigate ('Login', {role: 'parent'})}
           >
             <Text style={styles.text}>Je suis Parent</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
+          </Pressable>
+          <Pressable
+            pressEffectColor="white"
             style={styles.btn}
             onPress={() => navigation.navigate ('Login', {role: 'admin'})}
           >
             <Text style={styles.text}>Je suis Administrateur</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
@@ -72,7 +76,7 @@ const styles = StyleSheet.create ({
     marginVertical: 5,
     marginHorizontal: 'auto',
     height: 50,
-    backgroundColor: 'blue',
+    backgroundColor: '#1177BB',
     borderRadius: 50,
     // flex: 1,
     justifyContent: 'center',

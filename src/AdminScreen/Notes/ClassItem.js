@@ -2,17 +2,15 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {useNavigation} from '@react-navigation/native';
+import {Pressable} from '@react-native-material/core';
 
-export default function ClassItem({navigation, classe}) {
+export default function ClassItem({navigation, classe, urlClasse}) {
   const navi = useNavigation ();
   return (
-    <TouchableOpacity onPress={() => navi.navigate (classe.urlClasse)}>
-      <View
+    <View>
+      <Pressable
+        onPress={() => navi.navigate (urlClasse, {classe})}
         style={{
-          // borderWidth: 1,
-          // borderColor: 'blue',
-          // width: '100%',
-          // height:50,
           padding: 5,
           flexDirection: 'row',
           justifyContent: 'space-around',
@@ -21,13 +19,17 @@ export default function ClassItem({navigation, classe}) {
           backgroundColor: 'white',
           marginHorizontal: 10,
           marginBottom: 10,
-          elevation: 10,
-          shadowColor: 'rgba(118,118,118,0.3)',
+          elevation: 2,
+          shadowColor: 'rgb(118,118,118)',
           // shadowOpacity: 0.2,
         }}
       >
         <View style={{alignItems: 'center', flexDirection: 'row'}}>
-          <Image source={classe.image} style={{width: 50, height: 50}} />
+          <Image
+            source={require ('../../assets/image/20.png')}
+            style={{width: 50, height: 50}}
+            resizeMode="contain"
+          />
           <Text style={{marginLeft: 20, color: 'gray', fontWeight: 600}}>
             {classe.nomClasse}
           </Text>
@@ -45,7 +47,7 @@ export default function ClassItem({navigation, classe}) {
         >
           <Icon name="chevron-right" size={15} />
         </View>
-      </View>
-    </TouchableOpacity>
+      </Pressable>
+    </View>
   );
 }

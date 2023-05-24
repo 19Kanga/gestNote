@@ -6,7 +6,7 @@ import {
   SectionList,
   ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 // import {SearchBar} from 'react-native-screens';
 import {
@@ -17,11 +17,12 @@ import {
   Wrap,
 } from '@react-native-material/core';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ClasseNotes from '../Resultat/classeNotes';
+import ClasseNotes from '../../AdminScreen/Resultat/classeNotes';
+// import ClasseNotes from '../Resultat/classeNotes';
 // import ClasseNotes from './classeNotes';
 // import {Card} from '@rneui/themed';
 
-export default function Ratrapage1({data, classe, ad, ae}) {
+export default function Semestre2({noteClasses, classe, exa, ad, ae}) {
   const section = {
     t1: 'N°',
     t2: 'Nom',
@@ -29,6 +30,17 @@ export default function Ratrapage1({data, classe, ad, ae}) {
     t4: 'Credit',
     t5: <Icon name="ellipsis-vertical" size={20} />,
   };
+
+  const data = [
+    {
+      num: 1,
+      nom: 'zaza kamte',
+      moyenne: 14.7,
+      total: 25,
+
+      color: 'rgba(52, 168, 83,.2)',
+    },
+  ];
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#F5F6F7'}}>
@@ -66,11 +78,11 @@ export default function Ratrapage1({data, classe, ad, ae}) {
           <Text
             style={{color: 'white', fontFamily: 'Roboto-Black', marginLeft: 4}}
           >
-            Classe : {classe.nomClasse + ' ' + classe.niveau_classe}
+            Classe : {classe.nomClasse}
           </Text>
           <View style={{flexDirection: 'row', marginTop: 8}}>
             <Text style={styles.text}>
-              Total : &nbsp;<Text style={{color: 'white'}}>{data.length}</Text>
+              Total : <Text style={{color: 'white'}}>{noteClasses.length}</Text>
             </Text>
             <Text style={styles.text}>
               Admis : <Text style={{color: 'greenyellow'}}>{ad}</Text>
@@ -89,7 +101,7 @@ export default function Ratrapage1({data, classe, ad, ae}) {
           marginVertical: 17,
         }}
       >
-        LISTE DES NOTES DE LA SESSION NORMALE
+        LISTE DES NOTES : {exa}
       </Text>
       <View>
         <View
@@ -165,13 +177,13 @@ export default function Ratrapage1({data, classe, ad, ae}) {
               marginHorizontal: 5,
               elevation: 15,
               shadowColor: 'rgba(118,118,118,.6)',
-              // paddingVertical: 2,
+              paddingVertical: 2,
               backgroundColor: 'white',
-              // paddingBottom: 100,
+              paddingBottom: 100,
             }}
           >
-            {data.map ((dat, index) => (
-              <ClasseNotes key={index} notes={dat} url="DetailNotes" />
+            {noteClasses.map ((dat, index) => (
+              <ClasseNotes key={index} notes={dat} url="Voir" />
             ))}
           </ScrollView>
         </View>
@@ -194,16 +206,6 @@ const styles = StyleSheet.create ({
     color: 'gray',
     padding: 5,
   },
-  // item1: {
-  //   // paddingVertical: 5,
-  //   width: 45,
-  //   // height: 30,
-  //   borderWidth: 1,
-  //   padding: 5,
-  //   marginVertical: 3,
-  //   justifyContent: 'center',
-  //   alignSelf: 'center',
-  // },
   sectionHeader: {
     fontFamily: 'RobotoSlab-Medium',
     fontSize: 15,

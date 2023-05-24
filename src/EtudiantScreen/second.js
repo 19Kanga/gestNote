@@ -4,7 +4,7 @@ import {Image, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 function Second () {
   return (
     <View>
-      <Text>Hello lionel</Text>
+      <Text>Pas encore disponible</Text>
     </View>
   );
 }

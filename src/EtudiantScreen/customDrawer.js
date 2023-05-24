@@ -12,8 +12,25 @@ import {
 } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Pressable} from '@react-native-material/core';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout, reset} from '../../store/auth.slice';
+import {useNavigation} from '@react-navigation/native';
 
 export default function CustomDrawer (props) {
+  const dispatch = useDispatch ();
+  const navi = useNavigation ();
+  // const {user} = useSelector (state => state.auth);
+
+  const onLogout = () => {
+    dispatch (logout ());
+    dispatch (reset ());
+    navi.navigate ('Acceuil');
+  };
+
+  const {user, token, isLoading, isError, isSuccess, message} = useSelector (
+    state => state.auth
+  );
+
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView
@@ -78,6 +95,7 @@ export default function CustomDrawer (props) {
           }}
         >
           <Pressable
+            onPress={onLogout}
             pressEffectColor="rgb(0, 122, 204)"
             style={{
               flexDirection: 'row',

@@ -1,16 +1,13 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-// import {SettingsScreen} from '../screens/SettingsScreen';
-// import {StackNavigator} from './StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomDrawer from './customDrawer';
 import {useWindowDimensions, StyleSheet, View, Text} from 'react-native';
-import AdminScreen from '../AdminScreen';
-// import Second from './second';
-import Layout1 from './Layout/layout1';
+
 import Layout2 from './Layout/Layout2';
 import Second from './second';
 import {Pressable} from '@react-native-material/core';
+import Parametre from './Parametre';
 
 const Drawer = createDrawerNavigator ();
 
@@ -80,18 +77,34 @@ const EtudiantScreen = ({navigation}) => {
       <Drawer.Screen
         name="Layout1"
         // options={{title: 'Settings'}}
-        component={Layout1}
+        component={Parametre}
         options={{
-          title: 'Voir les resultas',
-          headerShown: false,
+          title: 'Listes resultas',
+          // headerShown: false,
+          headerTransparent: true,
+          headerTintColor: 'white',
           drawerIcon: ({color}) => {
             return (
               <Icon name="ios-newspaper-outline" size={22} color={color} />
             );
           },
+          headerRight: () => (
+            <View
+              style={{
+                borderRadius: 50,
+                overflow: 'hidden',
+                marginRight: 12,
+                marginTop: 6,
+              }}
+            >
+              <Pressable style={{padding: 7}} pressEffectColor="white">
+                <Icon name="md-ellipsis-vertical" size={24} color="white" />
+              </Pressable>
+            </View>
+          ),
         }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Noti"
         // options={{title: 'Settings'}}
         component={Layout1}
@@ -104,7 +117,7 @@ const EtudiantScreen = ({navigation}) => {
             );
           },
         }}
-      />
+      /> */}
       <Drawer.Screen
         name="SECOND"
         // options={{title: 'Settings'}}

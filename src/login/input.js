@@ -1,13 +1,18 @@
-import {ActivityIndicator} from '@react-native-material/core';
-import React, {Component} from 'react';
+import {Pressable} from '@react-native-material/core';
+import React, {Component, useEffect, useState} from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   TextInput,
   StyleSheet,
+  ActivityIndicator,
+
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useSelector, useDispatch} from 'react-redux';
+import {logine, reset} from '../../store/auth.slice';
+import {useNavigation} from '@react-navigation/native';
 
 const styles = StyleSheet.create ({
   container: {
@@ -19,17 +24,18 @@ const styles = StyleSheet.create ({
     // backgroundColor: 'yellow',
   },
   input: {
-    marginTop: 25,
+    // marginTop: 25,
     padding: 10,
     borderRadius: 5,
     width: '75%',
     height: 45,
-    borderColor: 'blue',
-    borderWidth: 1,
+    borderColor: '#1177BB',
   },
   submitButton: {
-    backgroundColor: 'blue',
-    width: '75%',
+    backgroundColor: '#1177BB',
+    width: '82%',
+    flexDirection: 'row',
+    alignItems:'center',
     justifyContent: 'center',
     padding: 12,
     marginTop: 25,
@@ -43,68 +49,112 @@ const styles = StyleSheet.create ({
   },
 });
 
-class Inputs extends Component {
-  constructor (props) {
-    super (props);
-    this.state = {
-      loading: false,
-    };
-  }
+function Inputs({navigation, role}) {
+  const dispatch = useDispatch ();
+  const navig = useNavigation ();
 
-  state = {
-    email: '',
-    password: '',
-  };
-  handleEmail = text => {
-    this.setState ({email: text});
-  };
-  handlePassword = text => {
-    this.setState ({password: text});
-  };
-  login = (email, pass) => {
-    alert ('email: ' + email + ' password: ' + pass);
+  const [email, setEmail] = useState ('');
+  const [password, setPassword] = useState ('');
 
-    if (email == 'admin') {
-      this.props.navigation.navigate ('Admin');
-      // this.setState ((loading = true));
-    }
-    if (email == 'etude') {
-      this.props.navigation.navigate ('Etudiant');
-      // this.setState ((loading = true));
+  const {user, token, isLoading, isError, isSuccess, message} = useSelector (
+    state => state.auth
+  );
+
+  useEffect (
+    () => {
+      if (isError) {
+        console.log ('error');
+      }
+
+      if (isSuccess) {
+        if (user.result.type === 'ADMIN') {
+          navig.navigate ('Admin');
+        }
+        if (user.result.type === 'ETUDIANT') {
+          navig.navigate ('Etudiant');
+        }
+      }
+  
+      dispatch (reset ());
+    },
+    [user, isError, isSuccess, message, navig, dispatch]
+  );
+
+  const handleSubmit = () => {
+    if (!email || !password) {
+      alert ('Donnée manquante');
+    } else {
+      dispatch (logine ({email, password}));
     }
   };
-  render () {
-    return (
-      <View style={styles.container}>
+
+  // console.log (user);
+  // console.log (isLoading);
+  // console.log (role);
+  // console.log ('sucess :' + isSuccess);
+
+  return (
+    <View style={styles.container}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          // backgroundColor: 'red',
+          borderWidth: 1,
+          paddingHorizontal: 5,
+          borderColor: 'rgba(118,118,118,.5)',
+          borderRadius: 5,
+        }}
+      >
+        <Icon name="person-outline" size={22} />
         <TextInput
           style={styles.input}
           underlineColorAndroid="transparent"
           placeholder="Email"
-          placeholderTextColor="#9a73ef"
+          placeholderTextColor="gray"
           autoCapitalize="none"
-          value={this.props.role}
-          onChangeText={this.handleEmail}
+          // value={this.props.role}
+          onChangeText={tex => setEmail (tex)}
         />
 
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          // backgroundColor: 'red',
+          borderWidth: 1,
+          borderColor: 'rgba(118,118,118,.5)',
+          paddingHorizontal: 5,
+          borderRadius: 5,
+          marginTop: 16,
+        }}
+      >
+        <Icon name="lock-closed-outline" size={22} />
         <TextInput
           style={styles.input}
           secureTextEntry={true}
           underlineColorAndroid="transparent"
           placeholder="Password"
-          placeholderTextColor="#9a73ef"
+          placeholderTextColor="gray"
           autoCapitalize="none"
-          onChangeText={this.handlePassword}
+          onChangeText={tex => setPassword (tex)}
         />
-
-        <TouchableOpacity
-          style={styles.submitButton}
-          onPress={() => this.login (this.props.role, this.state.password)}
-        >
-          <Text style={styles.submitButtonText}> Se connecter </Text>
-        </TouchableOpacity>
       </View>
-    );
-  }
+
+      <Pressable
+        pressEffectColor="white"
+        style={styles.submitButton}
+        onPress={() => handleSubmit ()}
+      >
+        {isLoading ? <><ActivityIndicator color={'white'} size={'large'}/>
+        <Text style={styles.submitButtonText}> Connexion... </Text></> :<Text style={styles.submitButtonText}> Se connecter</Text>
+          }
+      </Pressable>
+    </View>
+  );
 }
 
 export default Inputs;

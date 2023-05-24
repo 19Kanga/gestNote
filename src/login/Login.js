@@ -54,7 +54,7 @@ export default function Login({navigation, route}) {
       <Image source={logo} alt="yooo" style={styles.logo} />
       <View style={styles.login}>
         {/* <Text style={styles.texte}>Connexion</Text> */}
-        <Inputs navigation={navigation} role={route.params.role} />
+        <Inputs navig={navigation} role={route.params.role} />
       </View>
       <Text style={styles.too}>Copyright &copy; 2023</Text>
     </SafeAreaView>

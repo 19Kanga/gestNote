@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import {Text, View, Dimensions, Image} from 'react-native';
+import {Text, View, Dimensions, Image, ImageBackground} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 
 export const SLIDER_WIDTH = Dimensions.get ('window').width + 0;
@@ -8,8 +8,8 @@ export const ITEM_WIDTH = Math.round (SLIDER_WIDTH * 0.95);
 const data = [
   {
     id: 1,
-    name: 'React JS',
-    url: require ('../assets/image/20.png'),
+    name: 'Bienvenue Mr Henke',
+    url: require ('../assets/image/IMG-20230503-WA0004.jpg'),
   },
   {
     id: 2,
@@ -25,27 +25,43 @@ const data = [
 
 const renderItem = ({item}) => {
   return (
-    <View
-      style={{
-        borderWidth: 1,
-        borderColor: '#ccc',
-        padding: 15,
-        // marginTop: -50,
-        // borderRadius: 5,
-        // borderTopLeftRadius: 5,
-        // borderTopRightRadius: 5,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        // zIndex: 100,
-      }}
+    <ImageBackground
+      source={item.url}
+      resizeMode="cover"
+      style={{width: '100%', borderRadius: 10}}
     >
-      <Image source={item.url} style={{width: 100, height: 100}} />
-      <Text style={{marginVertical: 10, fontSize: 20, fontWeight: 'bold'}}>
-        {item.name}
-      </Text>
-    </View>
+      <View
+        style={{
+          borderWidth: 1,
+          borderColor: '#ccc',
+          // padding: 15,
+          // marginTop: -50,
+          // borderRadius: 5,
+          // borderTopLeftRadius: 5,
+          // borderTopRightRadius: 5,
+          borderRadius: 10,
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          backgroundColor: 'transparent',
+          height: 160,
+          // zIndex: 100,
+        }}
+      >
+
+        {/* <Text
+          style={{
+            // marginVertical: 10,
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: '#1177BB',
+            opacity: 0.7,
+          }}
+        >
+          {item.name}
+        </Text> */}
+
+      </View>
+    </ImageBackground>
   );
 };
 
@@ -55,7 +71,7 @@ const Resul = ({name}) => {
   return (
     <View
       style={{
-        marginTop: name === 'etude' ? 0 : -145,
+        marginTop: name === 'etude' ? 0 : -100,
         marginBottom: 5,
       }}
     >

@@ -8,18 +8,22 @@ import EtudiantScreen from './src/EtudiantScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Button, Image, Text, View} from 'react-native';
 import Acceuil from './src/acceuil';
-import Resul from './src/AdminScreen/Carousel';
 import ParentScreen from './src/Parent/Parent';
 import {ViewPropTypes} from 'deprecated-react-native-prop-types';
 import Resultat from './src/AdminScreen/Resultat/Resultat';
 import NotesClasses from './src/AdminScreen/Resultat/NotesClasses';
-import Dashboard from './src/AdminScreen/Resultat/Dashboard';
 import Notes from './src/AdminScreen/Notes';
 import Presence from './src/AdminScreen/Presence';
 import Communique from './src/AdminScreen/Communique';
 import Convocation from './src/AdminScreen/Convocation';
-import Ratrapage1 from './src/AdminScreen/Notes/ratrapage1';
 import ListEudiant from './src/AdminScreen/Notes/ListEudiant';
+import DetailNotes from './src/AdminScreen/Notes/DetailNotes';
+import VoirNote from './src/AdminScreen/Resultat/VoirNote';
+import {Provider} from 'react-redux';
+import {store} from './store';
+import Parametre from './src/AdminScreen/Parametre/Parametre';
+import Chat from './src/AdminScreen/Chat/Chat';
+import AddCommunique from './src/AdminScreen/Communique/AddCommuinique';
 
 // import {Text} from '@react-native-material/core';
 
@@ -29,22 +33,16 @@ const Buttons = () => {
   return <Icon name="settings" size={20} color="black" />;
 };
 
-// const btnn = () => {
-//   return (
-//     <Image
-//       source={require ('./src/assets/image/iiac.png')}
-//       style={{width: 40, height: 40, borderRadius: 50, resizeMode: 'cover'}}
-//     />
-//   );
-// };
-
-export default function App () {
+function App () {
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
+          // headerTransparent: true,
           headerTitleAlign: 'center',
           headerTintColor: '#1177BB',
+          headerShadowVisible: false,
+          headerBlurEffect: 'systemUltraThinMaterial',
           headerTitleStyle: {
             fontFamily: 'ChivoMono-Medium',
           },
@@ -124,11 +122,21 @@ export default function App () {
           }}
         />
         <Stack.Screen
-          name="Rattrapages"
+          name="Voir"
           // options={{title: 'Settings'}}
-          component={Notes}
+          component={VoirNote}
           options={{
-            title: 'Ratrapages',
+            headerTintColor: 'white',
+            title: 'Notes Detaillées',
+            headerTransparent: true,
+            // headerSearchBarOptions: {
+            //   barTintColor: 'whitesmoke',
+            //   tintColor: 'white',
+            //   disableBackButtonOverride: true,
+            //   headerIconColor: 'white',
+            //   hideNavigationBar: true,
+            //   // shouldShowHintSearchIcon: false,
+            // },
             // headerShown: false,
             // drawerIcon: ({color}) => {
             //   return <Icon name="person-outline" size={22} color={color} />;
@@ -136,11 +144,38 @@ export default function App () {
           }}
         />
         <Stack.Screen
+          name="Rattrapages"
+          // options={{title: 'Settings'}}
+          component={Notes}
+          options={{
+            title: 'Rattrapages',
+            // headerShown: false,
+            // drawerIcon: ({color}) => {
+            //   return <Icon name="person-outline" size={22} color={color} />;
+            // },
+          }}
+        />
+
+        <Stack.Screen
           name="List"
           // options={{title: 'Settings'}}
           component={ListEudiant}
           options={{
-            title: 'List des etudiants',
+            title: 'Liste des etudiants',
+            headerTintColor: 'white',
+            headerTransparent: true,
+            // headerShown: false,
+            // drawerIcon: ({color}) => {
+            //   return <Icon name="person-outline" size={22} color={color} />;
+            // },
+          }}
+        />
+        <Stack.Screen
+          name="DetailNotes"
+          // options={{title: 'Settings'}}
+          component={DetailNotes}
+          options={{
+            title: '',
             headerTintColor: 'white',
             headerTransparent: true,
             // headerShown: false,
@@ -167,22 +202,37 @@ export default function App () {
           component={Communique}
           options={{
             title: 'Communique',
-            // headerShown: false,
-            // drawerIcon: ({color}) => {
-            //   return <Icon name="person-outline" size={22} color={color} />;
-            // },
+            headerShadowVisible: true,
+          }}
+        />
+        <Stack.Screen
+          name="News"
+          component={AddCommunique}
+          options={{
+            title: 'Nouveau communique',
           }}
         />
         <Stack.Screen
           name="Convocation"
-          // options={{title: 'Settings'}}
           component={Convocation}
           options={{
             title: 'Convocation',
-            // headerShown: false,
-            // drawerIcon: ({color}) => {
-            //   return <Icon name="person-outline" size={22} color={color} />;
-            // },
+          }}
+        />
+        <Stack.Screen
+          name="Parametre"
+          // options={{title: 'Settings'}}
+          component={Parametre}
+          options={{
+            title: 'Reglage',
+          }}
+        />
+        <Stack.Screen
+          name="Chat"
+          // options={{title: 'Settings'}}
+          component={Chat}
+          options={{
+            title: 'Messageries',
           }}
         />
         {/* END ADMINsCREEN */}
@@ -203,7 +253,7 @@ export default function App () {
         />
         <Stack.Screen
           name="Parent"
-          component={ParentScreen}
+          component={EtudiantScreen}
           options={{
             headerShown: false,
             headerStyle: {
@@ -221,3 +271,11 @@ export default function App () {
     </NavigationContainer>
   );
 }
+
+export default () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};

@@ -9,75 +9,84 @@ import React, {useEffect, useState} from 'react';
 import ClassItem from './ClassItem';
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useSelector, useDispatch} from 'react-redux';
+import {getClasses, reset} from '../../../store/classe.slice';
+import {Pressable} from '@react-native-material/core';
 
 // import Examens from './Examens';
 
-const classe = [
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-  {
-    image: require ('../../assets/image/iiac.png'),
-    nomClasse: 'CS2I 3 DWM',
-    urlClasse: 'List',
-    parametre: 'CS2I 3 DWM',
-  },
-];
+// const classe = [
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+//   {
+//     image: require ('../../assets/image/iiac.png'),
+//     nomClasse: 'CS2I 3 DWM',
+//     urlClasse: 'List',
+//     parametre: 'CS2I 3 DWM',
+//   },
+// ];
 
 export default function Notes({navigation}) {
   const [visible, setVisible] = useState (false);
+
+  const {Classe, isSuccess, isLoading, isError, message} = useSelector (
+    state => state.classe
+  );
+
+  const dispatch = useDispatch ();
 
   const filterBtn = () => {
     return (
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
           onPress={() => {
-            setVisible (true);
+            toggleVisible (false);
           }}
         >
           <View
@@ -95,20 +104,20 @@ export default function Notes({navigation}) {
           </View>
         </TouchableOpacity>
         {/* <TouchableOpacity>
-          <View
-            style={{
-              // backgroundColor: '#ccc',
-              width: 40,
-              height: 40,
-              marginRight: 15,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: 50,
-            }}
-          >
-            <Icon name="ios-filter" size={24} color="#1177BB" />
-          </View>
-        </TouchableOpacity> */}
+        <View
+          style={{
+            // backgroundColor: '#ccc',
+            width: 40,
+            height: 40,
+            marginRight: 15,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: 50,
+          }}
+        >
+          <Icon name="ios-filter" size={24} color="#1177BB" />
+        </View>
+      </TouchableOpacity> */}
       </View>
     );
   };
@@ -118,9 +127,28 @@ export default function Notes({navigation}) {
       navigation.setOptions ({
         headerRight: filterBtn,
       });
+
+      if (isError) {
+        console.log (message);
+      }
+
+      // if (!user) {
+      //   navigate ('/login');
+      // }
+
+      dispatch (getClasses ());
+
+      return () => {
+        dispatch (reset ());
+      };
     },
-    [navigation]
+    [navigation, isError, message, dispatch]
   );
+
+  const handleActualite = e => {
+    e.preventDefault ();
+    dispatch (getClasses ());
+  };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#F5F6F7'}}>
@@ -174,12 +202,43 @@ export default function Notes({navigation}) {
           Classes
         </Text>
       </View>
-      <ScrollView>
+      <ScrollView
+        contentContainerStyle={{
+          flex: isSuccess ? 0 : 1,
+          // alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
         <View>
-          {classe.map ((cls, index) => {
-            return <ClassItem key={index} classe={cls} />;
+          {Classe.map ((cls, index) => {
+            return <ClassItem key={index} classe={cls} urlClasse="List" />;
           })}
         </View>
+
+        {!isSuccess
+          ? <View
+              style={{
+                width: '80%',
+                height: 40,
+                backgroundColor: '#1177BB',
+                alignSelf: 'center',
+                borderRadius: 10,
+                overflow: 'hidden',
+                // justifyContent: 'center',
+              }}
+            >
+              <Pressable
+                onPress={e => handleActualite (e)}
+                style={{
+                  height: 40,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{color: 'white'}}>Mettre les données à jours</Text>
+              </Pressable>
+            </View>
+          : ''}
 
       </ScrollView>
     </SafeAreaView>

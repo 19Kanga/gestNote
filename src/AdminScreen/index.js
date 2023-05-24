@@ -9,11 +9,13 @@ import {
   TouchableHighlight,
   StatusBar,
 } from 'react-native';
-import axios from 'axios';
 import Resul from './Carousel';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Menu from './Menu';
 import {ScrollView} from 'react-native-gesture-handler';
+import {Pressable} from '@react-native-material/core';
+import {logout, reset} from '../../store/auth.slice';
+import {useDispatch, useSelector} from 'react-redux';
 
 const datas = [
   {
@@ -26,15 +28,15 @@ const datas = [
     title: 'Gerer les Notes',
     url: 'Rattrapages',
   },
-  {
-    iconName: 'calendar-outline',
-    title: 'Ascence / Presence',
-    url: 'Presence',
-  },
+  // {
+  //   iconName: 'calendar-outline',
+  //   title: 'Ascence / Presence',
+  //   url: 'Presence',
+  // },
   {
     iconName: 'md-chatbubble-ellipses-outline',
     title: 'Chat',
-    url: 'Resultat',
+    url: 'Chat',
   },
   {
     iconName: 'megaphone-outline',
@@ -49,18 +51,19 @@ const datas = [
   {
     iconName: 'settings-outline',
     title: 'Parametre',
-    url: 'Resultat',
+    url: 'Parametre',
   },
-  {
-    iconName: 'exit-outline',
-    title: 'Logout',
-    url: 'Resultat',
-  },
+  // {
+  //   iconName: 'exit-outline',
+  //   title: 'Logout',
+  //   url: 'Resultat',
+  // },
 ];
 
 // create a component
 const AdminScreen = ({navigation}) => {
   //   const [etude, setEtude] = useState ([]);
+
   //   const fetchAPI = async () => {
   //     try {
   //       const res = await axios.get ('http:/192.168.42.74:3003/api/user/');
@@ -76,6 +79,19 @@ const AdminScreen = ({navigation}) => {
 
   // etude.map (et => console.log (et.username));
 
+  const dispatch = useDispatch ();
+  // const {user} = useSelector (state => state.auth);
+
+  const onLogout = () => {
+    dispatch (logout ());
+    dispatch (reset ());
+    navigation.navigate ('Acceuil');
+  };
+
+  const {user, token, isLoading, isError, isSuccess, message} = useSelector (
+    state => state.auth
+  );
+
   return (
     <SafeAreaView style={styles.container}>
 
@@ -87,17 +103,12 @@ const AdminScreen = ({navigation}) => {
           // marginHorizontal: 10,
           paddingVertical: 10,
           paddingHorizontal: 8,
-          paddingBottom: 160,
+          paddingBottom: 145,
           backgroundColor: '#1177BB',
           elevation: 5,
-          shadowOffset: {
-            height: 85,
-            width: 55,
-          },
           shadowColor: 'blue',
-          shadowOpacity: 10,
           shadowRadius: 1,
-          zIndex: -10,
+          // zIndex: -10,
           borderBottomEndRadius: 5,
           borderBottomStartRadius: 5,
         }}
@@ -111,10 +122,11 @@ const AdminScreen = ({navigation}) => {
             color: 'white',
           }}
         >
-          Bienvenue Fotso
+          Bienvenue {user.result.lastname}
         </Text>
         <Image
           source={require ('../assets/image/iiac.png')}
+          defaultSource={user.result.profile}
           alt=""
           style={{
             width: 40,
@@ -134,6 +146,7 @@ const AdminScreen = ({navigation}) => {
             flexWrap: 'wrap',
             justifyContent: 'center',
             paddingBottom: 10,
+            paddingTop: 10,
           }}
         >
 
@@ -144,30 +157,25 @@ const AdminScreen = ({navigation}) => {
         </View>
 
       </ScrollView>
-      <TouchableHighlight
-        style={{
-          backgroundColor: '#1177BB',
-          height: 40,
-          width: '80%',
-          padding: 10,
-          alignSelf: 'center',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: 10,
-          zIndex: 1,
-          elevation: 20,
-        }}
-      >
-        <Text style={{color: 'white'}}>Deconnexion</Text>
-      </TouchableHighlight>
-
-      {/* <Button title="Deconnexion" onPress={() => navigation.navigate('Parent')}  /> */}
-      {/* <Button
-        title="Go to Etudiant profile"
-        onPress={() => navigation.navigate ('Etudiant')}
-      />
-      <Button title="Parent" onPress={() => navigation.navigate ('Parent')} /> */}
-
+      <View>
+        <Pressable
+          onPress={() => onLogout ()}
+          style={{
+            backgroundColor: '#1177BB',
+            height: 50,
+            width: '92%',
+            padding: 10,
+            alignSelf: 'center',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 10,
+            zIndex: 1,
+            // elevation: 20,
+          }}
+        >
+          <Text style={{color: 'white'}}>Deconnexion</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 };

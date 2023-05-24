@@ -16,13 +16,9 @@ import Class1 from './Class1';
 import Dashboard from './Dashboard';
 import NotesClasses from './NotesClasses';
 import {IconButton} from '@react-native-material/core';
-// import AdminScreen from '../AdminScreen';
 
 const Drawer = createDrawerNavigator ();
 
-// const Visible = () => {
-//   setIsVisible (true);
-// };
 export default function Resultat({navigation}) {
   const {width, height} = useWindowDimensions ();
   const filterBtn = () => {
@@ -62,8 +58,6 @@ export default function Resultat({navigation}) {
     );
   };
 
-  // const [isVisible, SetIsVisible] = useState (false);
-
   return (
     <Drawer.Navigator
       drawerContent={props => <CustomDrawer {...props} />}
@@ -92,6 +86,7 @@ export default function Resultat({navigation}) {
           );
         },
       }}
+      initialRouteName="Dashboard"
     >
       <Drawer.Screen
         name="Dashboard"
